@@ -1,0 +1,25 @@
+<div class="container center" *ngIf="details">
+    <h2>Details</h2>
+
+    <div class="col-lg-12 col-md-12 col-sm-12" >        
+
+        <div><span>Name: </span>{{details.name}}</div>
+        <div><span>Description: </span>{{details.description}}</div>
+        <div><span>Temperature: </span>{{details.temp}} &deg;</div>
+        <div><span>Feels like: </span>{{details.feelsLike}} &deg;</div>
+        <div><span>Min: </span>{{details.min}} &deg;</div>
+        <div><span>Max: </span>{{details.max}} &deg;</div>
+        <div><span>Pressure: </span>{{details.pressure}} hPa</div>
+        <div><span>Humidity: </span>{{details.humidity}} %</div>
+        <div><span>Win speed: </span>{{details.windSpeed}} m/s</div>
+        
+    </div>
+
+    <br />
+
+    <p>
+        <a [routerLink]="['../../weather']">
+            <img src="assets/images/arrow-background-icon.png" style="cursor: pointer; width: 52px;" />
+        </a>
+    </p>
+</div>

@@ -1,0 +1,36 @@
+<div class="container text-right">
+  <input type="number" maxlength="5" minlength="5" [(ngModel)]='inputZip' (keyup.enter)='addCityByZipCode()' />
+  <button (click)="addCityByZipCode()" >Add zip code</button>
+  <div *ngIf="displayMessage" class="{{msgClass}}" >{{message}}</div>
+</div>
+
+<br />
+
+<div class="row" *ngIf="cities && cities.length">
+  <div class="col-lg-3 col-md-4 col-sm-12" *ngFor='let city of cities' >
+
+    <h2 >
+      {{city.name}}
+    </h2>
+    <p>
+      Current temperature
+    </p>
+    <p>
+      {{city.temp}} &deg;
+    </p>
+    <p [ngSwitch]="city.icon">
+      <img src="http://ssl.gstatic.com/onebox/weather/128/sunny.png" *ngSwitchCase="'01n'" />
+      <img src="http://ssl.gstatic.com/onebox/weather/128/cloudy.png" *ngSwitchCase="'02n'" />
+      <img src="http://ssl.gstatic.com/onebox/weather/128/rain.png" *ngSwitchCase="'03n'" />
+      <img src="http://ssl.gstatic.com/onebox/weather/128/snow.png" *ngSwitchCase="'13n'" />
+      <img src="http://ssl.gstatic.com/onebox/weather/128/partly_cloudy.png" *ngSwitchDefault />
+    </p>
+    <p>
+      <a class="btn" [routerLink]="['../forecast/'+city.name]">View details</a>
+      <a (click)="removeCity(city.name+city.country)"><img src="assets/images/trash-icon.png" class="image-icon" /></a>
+    </p>
+    <p style="text-align: center;">
+      
+    </p>
+  </div>
+</div>
